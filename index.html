@@ -16,15 +16,15 @@
 </head>
 <body>
 
-<div> <!-- Attach the API Dashboard controller here -->
-  <input type="text">
-  <button>
+<div data-ng-controller="ApiDashboardController as dash">
+  <input type="text" data-ng-model="dash.api_endpoint">
+  <button data-ng-click="dash.getEndpoint()">
     Request Endpoint
   </button>
 
   <h4>Results for <small>{{"api_endpoint"}}</small></h4>
   <pre>
-    {{ {key: "yay"} | json }}
+    {{ dash.display_data | json }}
   </pre>
 
 </div>
