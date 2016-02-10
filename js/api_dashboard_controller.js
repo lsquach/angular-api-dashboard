@@ -16,8 +16,11 @@ function ApiDashboardController($http){
   this.api_endpoint = ""; // user inputed url
   this.display_data = null; // JSON response data
   this.display_error = "";
+  this.pending = false;
 
   this.getEndpoint = function(){
+
+    this.pending = true;
 
     $http
       .get(this.api_endpoint)
@@ -25,11 +28,13 @@ function ApiDashboardController($http){
         function onSuccess(response){
           vm.display_error = "";
           vm.display_data = response.data;
+          vm.pending = false;
         },
 
         function onError(error){
           vm.display_error = "Error - Request Failed"
           vm.display_data = null;
+          vm.pending = false;
         }
       );
 
