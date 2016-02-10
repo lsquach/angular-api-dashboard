@@ -16,9 +16,12 @@ function ApiDashboardController($http){
   this.api_endpoint = ""; // user inputed url
   this.display_data = null; // JSON response data
   this.display_error = "";
+  this.display_title = "";
   this.pending = false;
 
   this.getEndpoint = function(){
+
+    if (!this.api_endpoint) { return; }
 
     this.pending = true;
 
@@ -29,14 +32,18 @@ function ApiDashboardController($http){
           vm.display_error = "";
           vm.display_data = response.data;
           vm.pending = false;
+          vm.display_title = vm.api_endpoint;
+          vm.api_endpoint = ""
         },
 
         function onError(error){
           vm.display_error = "Error - Request Failed"
           vm.display_data = null;
+          vm.display_title = vm.api_endpoint;
           vm.pending = false;
         }
       );
 
-  }
+  };
+
 }
