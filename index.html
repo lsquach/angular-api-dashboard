@@ -22,8 +22,9 @@
     Request Endpoint
   </button>
 
-  <h4>Results for <small>{{"api_endpoint"}}</small></h4>
+  <h4>Results for <small>{{dash.api_endpoint}}</small></h4>
   <pre>
+    {{ dash.display_error }}
     {{ dash.display_data | json }}
   </pre>
 
