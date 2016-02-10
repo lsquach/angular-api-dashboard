@@ -18,7 +18,9 @@
 
 <div data-ng-controller="ApiDashboardController as dash">
 
-  <input type="text" data-ng-model="dash.api_endpoint">
+  <input type="text"
+    data-ng-model="dash.api_endpoint"
+    data-ng-keydown="$event.which === 13 && dash.getEndpoint()">
   <button data-ng-click="dash.getEndpoint()"
           data-ng-disabled="!dash.api_endpoint">
     Request Endpoint
