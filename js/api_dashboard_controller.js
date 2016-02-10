@@ -19,8 +19,8 @@ function ApiDashboardController($http){
   this.display_title = "";
   this.pending = false;
 
-  this.getEndpoint = function(){
-
+  this.getEndpoint = function(endpoint){
+    this.api_endpoint = endpoint || this.api_endpoint;
     if (!this.api_endpoint) { return; }
 
     this.pending = true;

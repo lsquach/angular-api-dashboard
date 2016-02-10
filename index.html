@@ -17,6 +17,7 @@
 <body>
 
 <div data-ng-controller="ApiDashboardController as dash">
+
   <input type="text" data-ng-model="dash.api_endpoint">
   <button data-ng-click="dash.getEndpoint()"
           data-ng-disabled="!dash.api_endpoint">
@@ -25,6 +26,16 @@
           data-ng-class="{hide: !dash.pending}">
     </span>
   </button>
+
+  <h4>Some Popular Endpoints:</h4>
+  <ul data-ng-repeat="api in dash.popular_endpoints">
+    <li>
+      <a data-ng-href="#{{api}}"
+        data-ng-click="dash.getEndpoint(api)">
+        {{api}}
+      </a>
+    </li>
+  </ul>
 
   <h4 data-ng-show="dash.display_title">
     Results for <small>{{dash.display_title}}</small>
