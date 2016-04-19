@@ -38,7 +38,9 @@ User Interface Improvements:
 * Can you clear the input field
 * Can you submit on `enter`?
 * Don't make me wait for API calls!
-    * Display "pending...", a load bar, or a spinny-wheel so that I know the app still works.
+    * Display a load spinner so that I know the app still works:
+    * See `styles/main.css` for a custom `glyphicon-spin` style.
+    * Add this line to see the spinner: `<span class="glyphicon glyphicon-refresh glyphicon-spin"></span>`
 * Make sure the user never sees `{{ ... }}` rendered anywhere in the html.
 
 ## Promise Reference
