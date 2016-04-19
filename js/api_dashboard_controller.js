@@ -2,7 +2,9 @@ console.log('api_dashboard_controller.js loaded!');
 
 FAIL_RATE = 0 // 0-100% percent change that $http requests will fail
 
-app.controller("ApiDashboardController", ApiDashboardController)
+angular
+  .module("promisingApp")
+  .controller("ApiDashboardController", ApiDashboardController)
 
 function ApiDashboardController($http){
   var vm = this;

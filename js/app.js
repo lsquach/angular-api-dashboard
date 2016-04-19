@@ -1,4 +1,5 @@
 // DO NOT TOUCH
 
-var app = angular.module("promisingApp", [])
+angular
+  .module("promisingApp", [])
   .config(flakyHttp)
