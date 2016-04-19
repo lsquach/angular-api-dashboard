@@ -14,15 +14,17 @@
 </head>
 <body>
 
-<div> <!-- Attach the API Dashboard controller here -->
-  <input type="text">
-  <button>
-    Request Endpoint
-  </button>
+<div ng-controller="ApiDashboardController as api"> <!-- Attach the API Dashboard controller here -->
+  <input type="text" ng-model="api.api_endpoint">
 
-  <h4>Results for <small>{{"api_endpoint"}}</small></h4>
+    <button ng-click="api.getEndpoint(); spin=true">Request Endpoint
+      <span ng-show="spin" class="glyphicon glyphicon-refresh glyphicon-spin"></span>
+    </button>
+
+
+  <h4>Results for <small>{{api.api_endpoint}}</small></h4>
   <pre>
-    {{ {key: "yay"} | json }}
+    {{ api.display_data | json }}
   </pre>
 
 </div>

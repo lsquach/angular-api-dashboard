@@ -1,10 +1,10 @@
 console.log('api_dashboard_controller.js loaded!');
 
-FAIL_RATE = 0 // 0-100% percent change that $http requests will fail
+FAIL_RATE = 50;// 0-100% percent change that $http requests will fail
 
 angular
   .module("promisingApp")
-  .controller("ApiDashboardController", ApiDashboardController)
+  .controller("ApiDashboardController", ApiDashboardController);
 
 function ApiDashboardController($http){
   var vm = this;
@@ -15,11 +15,19 @@ function ApiDashboardController($http){
     "https://www.flickr.com/services/rest/?method=flickr.photos.search&format=json&api_key=4ef070a1a5e8d5fd19faf868213c8bd0&nojsoncallback=1&text=rick+astley"
   ];
 
-  this.api_endpoint = ""; // user inputed url
-  this.display_data = null; // JSON response data
+  vm.api_endpoint = ""; // user inputed url
+  vm.display_data = null; // JSON response data
 
-  this.getEndpoint = function(){
-    // request the api endpoint
-    // display the response data
-  }
+  vm.getEndpoint = function(){
+    $http
+      .get(vm.api_endpoint)
+      .then(onGetSuccess, onGetError);
+
+    function onGetSuccess(response) {
+      vm.display_data=response.data;
+    }
+    function onGetError() {
+      alert('there was an error');
+    }
+  };
 }

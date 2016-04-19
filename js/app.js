@@ -2,4 +2,4 @@
 
 angular
   .module("promisingApp", [])
-  .config(flakyHttp)
+  .config(flakyHttp);
