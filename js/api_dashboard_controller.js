@@ -17,17 +17,21 @@ function ApiDashboardController($http){
 
   vm.api_endpoint = ""; // user inputed url
   vm.display_data = null; // JSON response data
+  vm.pending = false;
 
   vm.getEndpoint = function(){
+    this.pending = true;
     $http
       .get(vm.api_endpoint)
       .then(onGetSuccess, onGetError);
 
     function onGetSuccess(response) {
       vm.display_data=response.data;
+      vm.pending = false;
     }
     function onGetError() {
       alert('there was an error');
+      vm.pending = false;
     }
   };
 }

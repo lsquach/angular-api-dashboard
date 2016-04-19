@@ -18,7 +18,7 @@
   <input type="text" ng-model="api.api_endpoint">
 
     <button ng-click="api.getEndpoint(); spin=true">Request Endpoint
-      <span ng-show="spin" class="glyphicon glyphicon-refresh glyphicon-spin"></span>
+      <span ng-show="spin" class="glyphicon glyphicon-refresh glyphicon-spin" ng-class="{hide: !api.pending}"></span>
     </button>
 
 
